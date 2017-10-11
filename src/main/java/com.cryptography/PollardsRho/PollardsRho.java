@@ -1,16 +1,18 @@
 package com.cryptography.PollardsRho;
 
+import com.cryptography.Factorizer;
 import com.cryptography.Utils;
 
 import java.math.BigInteger;
 
-public class PollardsRho {
-    private static int n;
-    private static BigInteger bigIntegerN;
+public class PollardsRho implements Factorizer{
+    private long n;
+    private BigInteger bigIntegerN;
 
-    public static int factor(int numberToFactor) {
-        n = numberToFactor;
-        int a = 2, b = 2, p = 1;
+    @Override
+    public long factorLong(long longToFactor) {
+        n = longToFactor;
+        long a = 2, b = 2, p = 1;
 
         while (p == 1) {
             a = f(a);
@@ -24,11 +26,12 @@ public class PollardsRho {
         return -1;
     }
 
-    private static int f(int a) {
-        return ((int) Math.pow(a, 2) + 1) % n;
+    private long f(long a) {
+        return ((long) Math.pow(a, 2) + 1) % n;
     }
 
-    public static BigInteger factorBigInteger(BigInteger bigIntegerToFactor) {
+    @Override
+    public BigInteger factorBigInteger(BigInteger bigIntegerToFactor) {
         bigIntegerN = bigIntegerToFactor;
         BigInteger a = new BigInteger("2"), b = new BigInteger("2"), p = BigInteger.ONE;
 
@@ -44,7 +47,7 @@ public class PollardsRho {
         return BigInteger.ZERO;
     }
 
-    private static BigInteger bigIntegerF(BigInteger a) {
+    private BigInteger bigIntegerF(BigInteger a) {
         return a.pow(2).add(BigInteger.ONE).mod(bigIntegerN);
     }
 }

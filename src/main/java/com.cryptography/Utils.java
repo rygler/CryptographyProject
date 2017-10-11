@@ -1,10 +1,7 @@
 package com.cryptography;
 
-/**
- * Created by Raphael on 10/11/2017.
- */
 public class Utils {
-    public static int getGCD(int a, int b) {
+    public static long getGCD(long a, long b) {
         if (b == 0) {
             return a;
         }
