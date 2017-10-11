@@ -1,5 +1,7 @@
 package com.cryptography.PollardsRho;
 
+import com.cryptography.Utils;
+
 import java.math.BigInteger;
 
 public class PollardsRho {
@@ -13,7 +15,7 @@ public class PollardsRho {
         while (p == 1) {
             a = f(a);
             b = f(f(b));
-            p = getGCD(Math.abs(b - a), n);
+            p = Utils.getGCD(Math.abs(b - a), n);
             if (p > 1) {
                 return p;
             }
@@ -24,14 +26,6 @@ public class PollardsRho {
 
     private static int f(int a) {
         return ((int) Math.pow(a, 2) + 1) % n;
-    }
-
-    private static int getGCD(int a, int b) {
-        if (b == 0) {
-            return a;
-        }
-
-        return getGCD(b, a % b);
     }
 
     public static BigInteger factorBigInteger(BigInteger bigIntegerToFactor) {
