@@ -1,8 +1,11 @@
 package com.cryptography.FermatFactorization;
 
 import com.cryptography.Factorizer;
+import com.cryptography.Utils;
 
 import java.math.BigInteger;
+
+import static com.cryptography.Utils.bigIntegerSqrt;
 
 public class FermatFactorization implements Factorizer {
 
@@ -84,21 +87,5 @@ public class FermatFactorization implements Factorizer {
         return result;
     }
 
-    private static BigInteger bigIntegerSqrt(BigInteger n) {
-        BigInteger r = BigInteger.ZERO;
-        BigInteger m = r.setBit(2 * n.bitLength());
-        BigInteger nr;
 
-        do {
-            nr = r.add(m);
-            if (nr.compareTo(n) != 1) {
-                n = n.subtract(nr);
-                r = nr.add(m);
-            }
-            r = r.shiftRight(1);
-            m = m.shiftRight(2);
-        } while (m.bitCount() != 0);
-
-        return r;
-    }
 }
