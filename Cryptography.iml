@@ -31,5 +31,15 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="org.ejml:ejml-all:0.32" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/flanagan.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
