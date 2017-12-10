@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5cf840ab-2fe9-4b7a-a79d-9bf59c6d1df1" name="Default" comment="">
+    <list default="true" id="5cf840ab-2fe9-4b7a-a79d-9bf59c6d1df1" name="Default" comment="and even more">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com.cryptography/QuadraticSieve/QuadraticSieve.java" afterPath="$PROJECT_DIR$/src/main/java/com.cryptography/QuadraticSieve/QuadraticSieve.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/java/com.cryptography/CryptographyTests.java" afterPath="$PROJECT_DIR$/test/java/com.cryptography/CryptographyTests.java" />
@@ -26,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CryptographyTests.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CryptographyTests.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/java/com.cryptography/CryptographyTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="569">
-              <caret line="103" column="42" lean-forward="false" selection-start-line="103" selection-start-column="42" selection-end-line="103" selection-end-column="42" />
+            <state relative-caret-position="287">
+              <caret line="101" column="38" lean-forward="false" selection-start-line="101" selection-start-column="38" selection-end-line="101" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -38,14 +38,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QuadraticSieve.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="QuadraticSieve.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com.cryptography/QuadraticSieve/QuadraticSieve.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="92" column="28" lean-forward="true" selection-start-line="92" selection-start-column="27" selection-end-line="92" selection-end-column="28" />
+            <state relative-caret-position="3417">
+              <caret line="172" column="15" lean-forward="false" selection-start-line="172" selection-start-column="15" selection-end-line="172" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#503#515#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,6 +73,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>i</find>
+      <find>genera</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -95,8 +95,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com.cryptography/PMinusOne/PMinusOne.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.cryptography/FermatFactorization/FermatFactorization.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.cryptography/Utils.java" />
-        <option value="$PROJECT_DIR$/test/java/com.cryptography/CryptographyTests.java" />
         <option value="$PROJECT_DIR$/src/main/java/com.cryptography/QuadraticSieve/QuadraticSieve.java" />
+        <option value="$PROJECT_DIR$/test/java/com.cryptography/CryptographyTests.java" />
       </list>
     </option>
   </component>
@@ -750,7 +750,8 @@
       <workItem from="1509322847957" duration="221000" />
       <workItem from="1511834595599" duration="2346000" />
       <workItem from="1511998368355" duration="13231000" />
-      <workItem from="1512864699594" duration="9053000" />
+      <workItem from="1512864699594" duration="9099000" />
+      <workItem from="1512879455108" duration="1101000" />
     </task>
     <task id="LOCAL-00001" summary="Fermat factorization with longs">
       <created>1507751162132</created>
@@ -770,54 +771,54 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CryptographyTests_primeFactorizationTest - 2017.12.09 at 20h 43m 24s.xml">
-      <configuration name="CryptographyTests.primeFactorizationTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CryptographyTests_primeFactorizationTest - 2017.12.09 at 20h 52m 29s.xml">
-      <configuration name="CryptographyTests.primeFactorizationTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CryptographyTests_primeFactorizationTest - 2017.12.09 at 21h 13m 52s.xml">
-      <configuration name="CryptographyTests.primeFactorizationTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CryptographyTests_primeFactorizationTest - 2017.12.09 at 21h 14m 44s.xml">
-      <configuration name="CryptographyTests.primeFactorizationTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CryptographyTests_primeFactorizationTest - 2017.12.09 at 21h 15m 12s.xml">
-      <configuration name="CryptographyTests.primeFactorizationTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CryptographyTests_primeFactorizationTest - 2017.12.09 at 21h 46m 39s.xml">
-      <configuration name="CryptographyTests.primeFactorizationTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CryptographyTests_primeFactorizationTest - 2017.12.09 at 21h 47m 08s.xml">
-      <configuration name="CryptographyTests.primeFactorizationTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CryptographyTests_primeFactorizationTest - 2017.12.09 at 21h 48m 17s.xml">
-      <configuration name="CryptographyTests.primeFactorizationTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="CryptographyTests_primeFactorizationTest - 2017.12.09 at 21h 49m 13s.xml">
       <configuration name="CryptographyTests.primeFactorizationTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="CryptographyTests_primeFactorizationTest - 2017.12.09 at 21h 49m 26s.xml">
       <configuration name="CryptographyTests.primeFactorizationTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="CryptographyTests_primeFactorizationTest - 2017.12.09 at 23h 20m 16s.xml">
+      <configuration name="CryptographyTests.primeFactorizationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CryptographyTests_primeFactorizationTest - 2017.12.09 at 23h 20m 41s.xml">
+      <configuration name="CryptographyTests.primeFactorizationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CryptographyTests_primeFactorizationTest - 2017.12.09 at 23h 30m 10s.xml">
+      <configuration name="CryptographyTests.primeFactorizationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CryptographyTests_primeFactorizationTest - 2017.12.09 at 23h 30m 37s.xml">
+      <configuration name="CryptographyTests.primeFactorizationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CryptographyTests_primeFactorizationTest - 2017.12.09 at 23h 31m 09s.xml">
+      <configuration name="CryptographyTests.primeFactorizationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CryptographyTests_primeFactorizationTest - 2017.12.09 at 23h 32m 39s.xml">
+      <configuration name="CryptographyTests.primeFactorizationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CryptographyTests_primeFactorizationTest - 2017.12.09 at 23h 33m 51s.xml">
+      <configuration name="CryptographyTests.primeFactorizationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CryptographyTests_primeFactorizationTest - 2017.12.09 at 23h 34m 22s.xml">
+      <configuration name="CryptographyTests.primeFactorizationTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44647000" />
+    <option name="totallyTimeSpent" value="45794000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1298" height="992" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32581455" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32552692" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43208432" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43233082" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -827,8 +828,8 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -848,7 +849,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fermat factorization with longs" />
     <MESSAGE value="Fermat factorization with BigInteger" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fermat factorization with BigInteger" />
+    <MESSAGE value="and even more" />
+    <option name="LAST_COMMIT_MESSAGE" value="and even more" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -873,7 +875,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -883,7 +884,6 @@
           <caret line="6" column="22" lean-forward="false" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#503#515#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -900,9 +900,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1386">
           <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -925,7 +922,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -961,9 +957,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1386">
           <caret line="66" column="0" lean-forward="true" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -979,7 +972,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1012,9 +1004,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="4" column="28" lean-forward="false" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1030,7 +1019,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1063,7 +1051,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1079,9 +1066,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="4" column="28" lean-forward="false" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1115,7 +1099,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1123,9 +1106,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="4" column="28" lean-forward="false" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1159,7 +1139,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1167,9 +1146,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="4" column="28" lean-forward="false" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1203,7 +1179,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1211,9 +1186,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1254,7 +1226,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1269,9 +1240,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="79">
           <caret line="60" column="23" lean-forward="true" selection-start-line="60" selection-start-column="23" selection-end-line="60" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1283,23 +1251,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/java/com.cryptography/CryptographyTests.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com.cryptography/QuadraticSieve/QuadraticSieve.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="103" column="42" lean-forward="false" selection-start-line="103" selection-start-column="42" selection-end-line="103" selection-end-column="42" />
+        <state relative-caret-position="3417">
+          <caret line="172" column="15" lean-forward="false" selection-start-line="172" selection-start-column="15" selection-end-line="172" selection-end-column="15" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.cryptography/QuadraticSieve/QuadraticSieve.java">
+    <entry file="file://$PROJECT_DIR$/test/java/com.cryptography/CryptographyTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="92" column="28" lean-forward="true" selection-start-line="92" selection-start-column="27" selection-end-line="92" selection-end-column="28" />
+        <state relative-caret-position="287">
+          <caret line="101" column="38" lean-forward="false" selection-start-line="101" selection-start-column="38" selection-end-line="101" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#503#515#0" expanded="true" />
           </folding>
         </state>
       </provider>

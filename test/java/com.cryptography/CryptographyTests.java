@@ -100,8 +100,8 @@ class CryptographyTests {
 
         aSolution = q.solveSLE(rrefMatrix, aSolution);
         System.out.println(aSolution);
+        System.out.println(q.findSolutionVectors(rrefMatrix));
 
-        q.findSolutionVectors(rrefMatrix);
     }
 
 }

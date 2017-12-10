@@ -11,6 +11,8 @@ public class QuadraticSieve {
     BitSet[] rows;
     BitSet[] solutionRows;
     List<BitSet> matrix;
+    List<BitSet> solutionVectorsForSLE;
+
     public BigInteger factor(BigInteger n) {
 //        BigInteger a =
         return null;
@@ -57,9 +59,6 @@ public class QuadraticSieve {
             }
 
             resultMatrix = addRows(resultMatrix, specialRowIndex, i);
-
-
-
         }
 
         return resultMatrix;
@@ -67,42 +66,33 @@ public class QuadraticSieve {
 
     public List<BitSet> findSolutionVectors(BitSet[] rrefMatrix) {
         List<Integer> emptyRowIndices = findEmptyRows(rrefMatrix);
-        List<BitSet> result = new ArrayList<>();
+        solutionVectorsForSLE = new ArrayList<>();
         if (emptyRowIndices.isEmpty() ) {
 
-            result.add(solveSLE(rrefMatrix, new BitSet(rrefMatrix.length)));
-            return result;
+            solutionVectorsForSLE.add(solveSLE(rrefMatrix, new BitSet(rrefMatrix.length)));
+            return solutionVectorsForSLE;
         }
         else {
-            int numOfSolutions = (int) Math.pow(2, emptyRowIndices.size());
-            List<BitSet> solutions = new ArrayList<>(numOfSolutions);
-//            solutions.add(new BitSet(rrefMatrix.length));
-
-            for (Integer emptyRowIndice : emptyRowIndices) {
-                BitSet bitSet = new BitSet();
-                bitSet.set(emptyRowIndice, true);
-                solutions.add(bitSet);
-            }
-            int intitialSolutionSize = solutions.size();
-            BitSet tautology = new BitSet();
-
-            for (int i = intitialSolutionSize - 1; i >= 0; i--) {
-                tautology.set(emptyRowIndices.get(i));
-                for (int j = 0; j <= i; j++) {
-                    BitSet bitSet = (BitSet) solutions.get(i).clone();
-                    bitSet.xor(solutions.get(j));
-                    solutions.add(bitSet);
-                }
-            }
-            solutions.add(tautology);
-            System.out.println(solutions);
-
-
+            generateTable(0, emptyRowIndices.size(), new int[emptyRowIndices.size()], rrefMatrix.length);
         }
+        return solutionVectorsForSLE;
+    }
 
+    public void generateTable(int index, int size, int[] current, int solutionLength) {
+        if (index == size) {
+            BitSet bitSet = new BitSet(solutionLength);
+            for (int i = 0; i < size; i++) {
 
+                bitSet.set(solutionLength - 1 - i, current[i] == 1);
 
-        return null;
+            }
+            solutionVectorsForSLE.add(bitSet);
+        } else {
+            for (int i = 0; i < 2; i++) {
+                current[index] = i;
+                generateTable(index + 1, size, current, solutionLength);
+            }
+        }
     }
 
     private List<Integer> findEmptyRows(BitSet[] rrefMatrix) {
