@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.BitSet;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -81,7 +83,25 @@ class CryptographyTests {
         for (int anInt : ints) {
             bigIntegers.add(new BigInteger(String.valueOf(anInt)));
         }
-        new QuadraticSieve().findSubsetsThatProducesSquare(bigIntegers, 13);
+
+        QuadraticSieve q = new QuadraticSieve();
+
+
+        BitSet[] matrix = q.getBitMatrix(bigIntegers, 13);
+        BitSet[] transposedMatrix = q.transposeMatrix(matrix);
+        BitSet[] rrefMatrix = q.rref(transposedMatrix);
+
+        System.out.println(Arrays.toString(matrix));
+        System.out.println(Arrays.toString(transposedMatrix));
+        System.out.println(Arrays.toString(rrefMatrix));
+
+        BitSet aSolution = new BitSet();
+        aSolution.set(4);
+
+        aSolution = q.solveSLE(rrefMatrix, aSolution);
+        System.out.println(aSolution);
+
+        q.findSolutionVectors(rrefMatrix);
     }
 
 }
