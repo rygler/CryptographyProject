@@ -1,70 +1,60 @@
 package com.cryptography.QuadraticSieve;
 
 import com.cryptography.Utils;
-import flanagan.math.Matrix;
-import org.ejml.simple.SimpleMatrix;
 
 import java.math.BigInteger;
 import java.util.*;
 
 public class QuadraticSieve {
-    BitSet[] rows;
-    BitSet[] solutionRows;
-    List<BitSet> matrix;
-    List<BitSet> solutionVectorsForSLE;
+    private static int bSmoothBound = 43;
+    private static int numOfInitialMatrixRows;
+    private static int numOfInitialMatrixCols;
+    private static int numOfTransposedMatrixRows;
+    private static int numOfTransposedMatrixCols;
+    private static List<BitSet> solutionVectorsForSLE;
+    private static List<BigInteger> ays;
 
-    public BigInteger factor(BigInteger n) {
-//        BigInteger a =
+    public static BigInteger factor(BigInteger n) {
+        List<BigInteger> numbersToFilter = generateNumbersToFilter(n, 60);
+        List<BigInteger> bSmoothNumbers = findBSmoothNumbers(numbersToFilter, bSmoothBound);
+        List<BigInteger> squares = findSquares(bSmoothNumbers, bSmoothBound);
+
         return null;
     }
 
-    public List<BigInteger> getPrimeFactorization(BigInteger n) {
-        List<BigInteger> factors = new ArrayList<BigInteger>();
-        for (BigInteger i = new BigInteger("2"); i.compareTo(n.divide(i)) < 0; i = i.add(BigInteger.ONE)) {
-            while (n.mod(i).equals(BigInteger.ZERO)) {
-                factors.add(i);
-                n = n.divide(i);
-            }
-        }
-        if (n.compareTo(BigInteger.ONE) > 0) {
-            factors.add(n);
-        }
-        return factors;
-    }
-
-
-    public List<BigInteger> findSubsetsThatProducesSquare(List<BigInteger> bSmoothNumbers, int b) {
+    private static List<BigInteger> findSquares(List<BigInteger> bSmoothNumbers,int b) {
         BitSet[] matrix = getBitMatrix(bSmoothNumbers, b);
-        solve(new ArrayList<>(Arrays.asList(matrix)));
-//        BitSet[] A = transposeMatrix(matrix);
-
+        BitSet[] transposedMatrix = transposeMatrix(matrix);
+        BitSet[] rrefMatrix = rref(transposedMatrix);
+        System.out.println(Arrays.toString(rrefMatrix));
+        List<BitSet> solutionVectors = findSolutionVectors(rrefMatrix);
+//        System.out.println(bSmoothNumbers);
+//        System.out.println(solutionVectors);
+        List<BigInteger> squares = new ArrayList<>();
+//        for (BitSet solutionVector : solutionVectors) {
+//            BigInteger square = constructSquare(solutionVector, bSmoothNumbers);
+//            squares.add(square);
+//        }
+//        System.out.println(squares);
+//        squares.add()
 
         return null;
     }
 
-    public BitSet[] rref(BitSet[] matrix) {
-        BitSet[] resultMatrix = new BitSet[matrix.length];
-        for (int i = 0; i < matrix.length; i++) {
-            resultMatrix[i] = (BitSet) matrix[i].clone();
+    private static BigInteger constructSquare(BitSet solutionVector, List<BigInteger> bSmoothNumbers) {
+        BigInteger result = BigInteger.ONE;
+        for (int i = solutionVector.nextSetBit(0); i >= 0; i = solutionVector.nextSetBit(i+1)) {
+            // operate on index i here
+            result = result.multiply(bSmoothNumbers.get(i));
+            if (i == Integer.MAX_VALUE) {
+                break; // or (i+1) would overflow
+            }
         }
 
-        for (int i = 0; i < matrix.length; i++) {
-            int specialRowIndex = findRowWithLeadingOne(matrix, i, i);
-            System.out.println("Row with Leading One: " + specialRowIndex);
-            if (specialRowIndex == -1) {
-                continue;
-            }
-            if (specialRowIndex != i) {
-                resultMatrix = moveRowUp(resultMatrix, specialRowIndex, i);
-            }
-
-            resultMatrix = addRows(resultMatrix, specialRowIndex, i);
-        }
-
-        return resultMatrix;
+        return result;
     }
 
-    public List<BitSet> findSolutionVectors(BitSet[] rrefMatrix) {
+    private static List<BitSet> findSolutionVectors(BitSet[] rrefMatrix) {
         List<Integer> emptyRowIndices = findEmptyRows(rrefMatrix);
         solutionVectorsForSLE = new ArrayList<>();
         if (emptyRowIndices.isEmpty() ) {
@@ -73,12 +63,13 @@ public class QuadraticSieve {
             return solutionVectorsForSLE;
         }
         else {
-            generateTable(0, emptyRowIndices.size(), new int[emptyRowIndices.size()], rrefMatrix.length);
+            generateTruthTable(rrefMatrix, 0, emptyRowIndices.size(), new int[emptyRowIndices.size()], rrefMatrix.length);
+
         }
         return solutionVectorsForSLE;
     }
 
-    public void generateTable(int index, int size, int[] current, int solutionLength) {
+    private static void generateTruthTable(BitSet[] rrefMatrix, int index, int size, int[] current, int solutionLength) {
         if (index == size) {
             BitSet bitSet = new BitSet(solutionLength);
             for (int i = 0; i < size; i++) {
@@ -86,28 +77,16 @@ public class QuadraticSieve {
                 bitSet.set(solutionLength - 1 - i, current[i] == 1);
 
             }
-            solutionVectorsForSLE.add(bitSet);
+            solutionVectorsForSLE.add(solveSLE(rrefMatrix, bitSet));
         } else {
             for (int i = 0; i < 2; i++) {
                 current[index] = i;
-                generateTable(index + 1, size, current, solutionLength);
+                generateTruthTable(rrefMatrix, index + 1, size, current, solutionLength);
             }
         }
     }
 
-    private List<Integer> findEmptyRows(BitSet[] rrefMatrix) {
-        List<Integer> emptyRowIndices = new ArrayList<>();
-
-        for (int i = 0; i < rrefMatrix.length; i++) {
-            if (rrefMatrix[i].isEmpty()) {
-                emptyRowIndices.add(i);
-            }
-        }
-
-        return emptyRowIndices;
-    }
-
-    public BitSet solveSLE(BitSet[] matrix, BitSet solution) {
+    private static BitSet solveSLE(BitSet[] matrix, BitSet solution) {
         for (int i = matrix.length - 1; i >= 0; i--) {
             if (!matrix[i].get(i)) {
                 continue;
@@ -124,32 +103,79 @@ public class QuadraticSieve {
         return solution;
     }
 
-    private BitSet[] addRows(BitSet[] resultMatrix, int specialRowIndex, int currentCol) {
-        for (int i = 0; i < resultMatrix.length; i++) {
-            if (i == specialRowIndex) {
-                continue;
-            }
+    private static List<Integer> findEmptyRows(BitSet[] rrefMatrix) {
+        List<Integer> emptyRowIndices = new ArrayList<>();
 
-            if (resultMatrix[i].get(currentCol)) {
-                resultMatrix[specialRowIndex].and(resultMatrix[i]);
+        for (int i = 0; i < rrefMatrix.length; i++) {
+            if (rrefMatrix[i].isEmpty()) {
+                emptyRowIndices.add(i);
             }
         }
 
-        return resultMatrix;
-
+        return emptyRowIndices;
     }
 
-    private BitSet[] moveRowUp(BitSet[] matrix, int rowIndex, int rowToSwap) {
-        System.out.println("Blehljoerjfpjeprfjpoerf");
-        BitSet temp = matrix[rowToSwap];
-        matrix[rowToSwap] = matrix[rowIndex];
-        matrix[rowIndex] = temp;
+    private static BitSet[] getBitMatrix(List<BigInteger> bSmoothNumbers, int b) {
+        List<Integer> primes = findPrimesUpTo(b);
+        numOfInitialMatrixCols = primes.size();
+        numOfInitialMatrixRows = bSmoothNumbers.size();
+        BitSet[] matrix = new BitSet[numOfInitialMatrixRows];
+
+        for (int row = 0; row < numOfInitialMatrixRows; row++) {
+            List<BigInteger> primeFactors = getPrimeFactorization(bSmoothNumbers.get(row));
+            matrix[row] = new BitSet(numOfInitialMatrixCols);
+            for (int col = 0; col < numOfInitialMatrixCols; col++) {
+                int prime = primes.get(col);
+                int frequency = Collections.frequency(primeFactors, new BigInteger(String.valueOf(prime)));
+                if (frequency % 2 == 1) {
+                    matrix[row].set(col);
+                } else {
+                    matrix[row].clear(col);
+                }
+            }
+        }
 
         return matrix;
     }
 
-    private int findRowWithLeadingOne(BitSet[] matrix, int startRow, int col) {
-        for (int i = startRow; i < matrix.length; i++) {
+    private static BitSet[] transposeMatrix(BitSet[] matrix) {
+        numOfTransposedMatrixCols = numOfInitialMatrixRows;
+        numOfTransposedMatrixRows = numOfInitialMatrixCols;
+        BitSet[] newMatrix = new BitSet[numOfTransposedMatrixRows];
+
+        for (int row = 0; row < numOfTransposedMatrixRows; row++) {
+            newMatrix[row] = new BitSet();
+            for (int col = 0; col < numOfTransposedMatrixCols; col++) {
+                newMatrix[row].set(col, matrix[col].get(row)) ;
+            }
+        }
+        return newMatrix;
+    }
+
+    private static BitSet[] rref(BitSet[] matrix) {
+        BitSet[] resultMatrix = new BitSet[numOfTransposedMatrixRows];
+        for (int i = 0; i < numOfTransposedMatrixRows; i++) {
+            resultMatrix[i] = (BitSet) matrix[i].clone();
+        }
+
+        for (int currentCol = 0, currentRow = 0; currentCol < numOfTransposedMatrixCols; currentCol++, currentRow++) {
+            int transformationRowIndex = findRowWithLeadingOne(matrix, currentRow + 1, currentCol);
+            if (transformationRowIndex == -1) {
+                continue;
+            }
+            if (transformationRowIndex != currentCol) {
+                System.out.println("moving row " + transformationRowIndex + " to " + currentCol);
+                resultMatrix = moveRowUp(resultMatrix, transformationRowIndex, currentCol);
+            }
+
+            resultMatrix = addRows(resultMatrix, transformationRowIndex, currentCol);
+        }
+
+        return resultMatrix;
+    }
+
+    private static int findRowWithLeadingOne(BitSet[] matrix, int startRow, int col) {
+        for (int i = startRow; i < numOfTransposedMatrixRows; i++) {
             if (matrix[i].get(col)) {
                 return i;
             }
@@ -158,121 +184,44 @@ public class QuadraticSieve {
         return -1;
     }
 
-    public BitSet[] transposeMatrix(BitSet[] matrix) {
-        BitSet[] newMatrix = new BitSet[matrix.length];
+    private static BitSet[] addRows(BitSet[] resultMatrix, int specialRowIndex, int currentCol) {
+        for (int i = 0; i < numOfTransposedMatrixRows; i++) {
+            if (i == specialRowIndex) {
+                continue;
+            }
 
-        for (int row = 0; row < matrix.length; row++) {
-            newMatrix[row] = new BitSet();
-            for (int col = 0; col < matrix.length; col++) {
-                newMatrix[row].set(col, matrix[col].get(row)) ;
+            if (resultMatrix[i].get(currentCol)) {
+//                resultMatrix[specialRowIndex].xor(resultMatrix[i]);
+                resultMatrix[i].xor(resultMatrix[specialRowIndex]);
             }
         }
-        return newMatrix;
+
+        return resultMatrix;
     }
 
-    public ArrayList<ArrayList<BitSet>> solve(List<BitSet> matrix) {
-        this.matrix = matrix;
-        HashMap<Integer, Object> map = new HashMap<>();
-        rows = new BitSet[matrix.size()];
-        solutionRows = new BitSet[matrix.size()];
-        for (int i = 0; i < rows.length; i++) {
-            rows[i] = matrix.get(i);
-            solutionRows[i] = new BitSet();
-            solutionRows[i].set(i);
-        }
-
-
-        for (int column = 0; column < rows.length; column++) {
-            int selectedRow = -1;
-            for (int row = 0; row < rows.length; row++) {
-                if (!rows[row].get(column)) {
-                    continue;
-                }
-                if (selectedRow == -1 && !map.containsKey(row)) {
-                    selectedRow = row;
-                    map.put(row, row);
-                    continue;
-                }
-                if (selectedRow != -1) {
-                    xor(row, selectedRow);
-                }
-            }
-            for (int row = 0; row < selectedRow; row++) {
-                if (!rows[row].get(column)) {
-                    continue;
-                }
-                xor(row, selectedRow);
-            }
-        }
-
-        ArrayList<ArrayList<BitSet>> solutions = new ArrayList<>();
-        for (int i = 0; i < rows.length; i++) {
-            if (rows[i].isEmpty()) {
-                solutions.add(createSolution(i));
-            }
-        }
-        System.out.println(solutions);
-        return solutions;
-    }
-
-    private ArrayList<BitSet> createSolution(int row) {
-        ArrayList<BitSet> solution = new ArrayList<>();
-        for (int column = 0; column < rows.length; column++) {
-            if (solutionRows[row].get(column)) {
-                solution.add(matrix.get(column));
-            }
-        }
-        return solution;
-    }
-
-    private void xor(int rowA, int rowB) {
-        rows[rowA].xor(rows[rowB]);
-        solutionRows[rowA].xor(solutionRows[rowB]);
-    }
-
-    public BitSet[] getBitMatrix(List<BigInteger> bSmoothNumbers, int b) {
-        List<Integer> primes = findPrimesUpTo(b);
-        int numOfColumns = primes.size();
-        int numOfRows = bSmoothNumbers.size();
-        BitSet[] matrix = new BitSet[bSmoothNumbers.size()];
-
-        for (int row = 0; row < numOfRows; row++) {
-            List<BigInteger> primeFactors = getPrimeFactorization(bSmoothNumbers.get(row));
-            matrix[row] = new BitSet(numOfColumns);
-            for (int col = 0; col < numOfColumns; col++) {
-                int prime = primes.get(col);
-                int frequency = Collections.frequency(primeFactors, new BigInteger(String.valueOf(prime)));
-                if (frequency % 2 == 1) {
-                    matrix[row].set(col);
-                } else {
-                    matrix[row].clear(col);
-                }
-
-
-            }
-        }
+    private static BitSet[] moveRowUp(BitSet[] matrix, int rowIndex, int rowToSwap) {
+        BitSet temp = matrix[rowToSwap];
+        matrix[rowToSwap] = matrix[rowIndex];
+        matrix[rowIndex] = temp;
 
         return matrix;
     }
 
-    public BigInteger findGcdOfSquareAndN(List<BigInteger> numbersThatMultiplyToSquare, List<BigInteger> correspondingOrigins, BigInteger n) {
-
-        BigInteger square = BigInteger.ONE;
-        for (BigInteger bigInteger : numbersThatMultiplyToSquare) {
-            square = square.multiply(bigInteger);
+    private static List<BigInteger> getPrimeFactorization(BigInteger n) {
+        List<BigInteger> factors = new ArrayList<>();
+        for (BigInteger i = new BigInteger("2"); i.compareTo(n.divide(i)) < 0; i = i.add(BigInteger.ONE)) {
+            while (n.mod(i).equals(BigInteger.ZERO)) {
+                factors.add(i);
+                n = n.divide(i);
+            }
         }
-        BigInteger squareRoot = Utils.bigIntegerSqrt(square);
-
-        BigInteger productOfOrigins = BigInteger.ONE;
-        for (BigInteger bigInteger : correspondingOrigins) {
-            productOfOrigins = productOfOrigins.multiply(bigInteger);
+        if (n.compareTo(BigInteger.ONE) > 0) {
+            factors.add(n);
         }
-
-        return productOfOrigins.add(squareRoot).gcd(n);
-
+        return factors;
     }
 
-    public List<BigInteger> findBSmoothNumbers(List<BigInteger> numbers, int b) {
+    private static List<BigInteger> findBSmoothNumbers(List<BigInteger> numbers, int b) {
         List<Integer> primes = findPrimesUpTo(b);
         List<BigInteger> numbersAfterDivision = new ArrayList<>(numbers);
 
@@ -296,7 +245,7 @@ public class QuadraticSieve {
         return results;
     }
 
-    private List<Integer> findPrimesUpTo(int b) {
+    private static List<Integer> findPrimesUpTo(int b) {
         List<Integer> primes = new ArrayList<>();
         int upperBoundSquareRoot = (int) Math.sqrt(b);
         boolean[] isComposite = new boolean[b + 1];
@@ -315,4 +264,18 @@ public class QuadraticSieve {
 
         return primes;
     }
+
+    private static List<BigInteger> generateNumbersToFilter (BigInteger n, int amountOfNumbers) {
+        List<BigInteger> numbers = new ArrayList<>();
+        BigInteger a = Utils.bigIntegerSqrt(n).add(BigInteger.ONE); // Effectively a ceiling function
+        ays = new ArrayList<>();
+        for (int i = 0; i < amountOfNumbers; i++) {
+            ays.add(a);
+            numbers.add(a.pow(2).subtract(n));
+            a = a.add(BigInteger.ONE);
+        }
+        return numbers;
+    }
+
+
 }
