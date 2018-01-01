@@ -79,22 +79,22 @@ class CryptographyTests {
 //
 //        System.out.println(new QuadraticSieveDraft().findGcdOfSquareAndN(bSmoothBigIntegers, originBigIntegers, new BigInteger("90283")));
 
-//        int[] ints = new int[] {10, 24, 35, 52, 54, 78};
-//        List<BigInteger> bigIntegers = new ArrayList<>();
-//        for (int anInt : ints) {
-//            bigIntegers.add(new BigInteger(String.valueOf(anInt)));
-//        }
-//
-//        QuadraticSieveDraft q = new QuadraticSieveDraft();
-//
-//
-//        BitSet[] matrix = q.getBitMatrix(bigIntegers, 13);
-//        BitSet[] transposedMatrix = q.transposeMatrix(matrix);
-//        BitSet[] rrefMatrix = q.rref(transposedMatrix);
+        int[] ints = new int[] {10, 24, 35, 52, 54, 78};
+        List<BigInteger> bigIntegers = new ArrayList<>();
+        for (int anInt : ints) {
+            bigIntegers.add(new BigInteger(String.valueOf(anInt)));
+        }
+
+        QuadraticSieveDraft q = new QuadraticSieveDraft();
+
+
+        BitSet[] matrix = QuadraticSieve.getBitMatrix(bigIntegers, 13);
+        BitSet[] transposedMatrix = QuadraticSieve.transposeMatrix(matrix);
+        BitSet[] rrefMatrix = QuadraticSieve.rref(transposedMatrix);
 //
 //        System.out.println(Arrays.toString(matrix));
 //        System.out.println(Arrays.toString(transposedMatrix));
-//        System.out.println(Arrays.toString(rrefMatrix));
+        System.out.println(Arrays.toString(rrefMatrix));
 //
 //        BitSet aSolution = new BitSet();
 //        aSolution.set(4);
@@ -102,7 +102,7 @@ class CryptographyTests {
 //        aSolution = q.solveSLE(rrefMatrix, aSolution);
 //        System.out.println(aSolution);
 //        System.out.println(q.findSolutionVectors(rrefMatrix));
-        QuadraticSieve.factor(new BigInteger("90283"));
+//        QuadraticSieve.factor(new BigInteger("90283"));
 
     }
 

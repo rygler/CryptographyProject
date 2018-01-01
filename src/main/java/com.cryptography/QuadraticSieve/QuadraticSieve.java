@@ -115,7 +115,7 @@ public class QuadraticSieve {
         return emptyRowIndices;
     }
 
-    private static BitSet[] getBitMatrix(List<BigInteger> bSmoothNumbers, int b) {
+    public static BitSet[] getBitMatrix(List<BigInteger> bSmoothNumbers, int b) {
         List<Integer> primes = findPrimesUpTo(b);
         numOfInitialMatrixCols = primes.size();
         numOfInitialMatrixRows = bSmoothNumbers.size();
@@ -138,7 +138,7 @@ public class QuadraticSieve {
         return matrix;
     }
 
-    private static BitSet[] transposeMatrix(BitSet[] matrix) {
+    public static BitSet[] transposeMatrix(BitSet[] matrix) {
         numOfTransposedMatrixCols = numOfInitialMatrixRows;
         numOfTransposedMatrixRows = numOfInitialMatrixCols;
         BitSet[] newMatrix = new BitSet[numOfTransposedMatrixRows];
@@ -152,18 +152,18 @@ public class QuadraticSieve {
         return newMatrix;
     }
 
-    private static BitSet[] rref(BitSet[] matrix) {
+    public static BitSet[] rref(BitSet[] matrix) {
         BitSet[] resultMatrix = new BitSet[numOfTransposedMatrixRows];
         for (int i = 0; i < numOfTransposedMatrixRows; i++) {
             resultMatrix[i] = (BitSet) matrix[i].clone();
         }
 
         for (int currentCol = 0, currentRow = 0; currentCol < numOfTransposedMatrixCols; currentCol++, currentRow++) {
-            int transformationRowIndex = findRowWithLeadingOne(matrix, currentRow + 1, currentCol);
+            int transformationRowIndex = findRowWithLeadingOne(resultMatrix, currentRow, currentCol);
             if (transformationRowIndex == -1) {
                 continue;
             }
-            if (transformationRowIndex != currentCol) {
+            if (transformationRowIndex != currentRow) { // interchangeable with currentCol (this is assuming square.)
                 System.out.println("moving row " + transformationRowIndex + " to " + currentCol);
                 resultMatrix = moveRowUp(resultMatrix, transformationRowIndex, currentCol);
             }
@@ -184,25 +184,24 @@ public class QuadraticSieve {
         return -1;
     }
 
-    private static BitSet[] addRows(BitSet[] resultMatrix, int specialRowIndex, int currentCol) {
+    private static BitSet[] addRows(BitSet[] resultMatrix, int transformationRowIndex, int currentCol) {
         for (int i = 0; i < numOfTransposedMatrixRows; i++) {
-            if (i == specialRowIndex) {
+            if (i == transformationRowIndex) {
                 continue;
             }
 
             if (resultMatrix[i].get(currentCol)) {
-//                resultMatrix[specialRowIndex].xor(resultMatrix[i]);
-                resultMatrix[i].xor(resultMatrix[specialRowIndex]);
+                resultMatrix[i].xor(resultMatrix[transformationRowIndex]);
             }
         }
 
         return resultMatrix;
     }
 
-    private static BitSet[] moveRowUp(BitSet[] matrix, int rowIndex, int rowToSwap) {
-        BitSet temp = matrix[rowToSwap];
-        matrix[rowToSwap] = matrix[rowIndex];
-        matrix[rowIndex] = temp;
+    private static BitSet[] moveRowUp(BitSet[] matrix, int rowToSwapIn, int rowToSwapOut) {
+        BitSet temp = matrix[rowToSwapOut];
+        matrix[rowToSwapOut] = matrix[rowToSwapIn];
+        matrix[rowToSwapIn] = temp;
 
         return matrix;
     }
